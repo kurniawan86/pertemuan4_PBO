@@ -3,28 +3,27 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class modelMenu {
-    public ArrayList<domainMenu> DB_menu = new ArrayList<>();
 
     int getLastId() {
-        if (DB_menu.isEmpty()) {
+        if (database.DB_menu.isEmpty()) {
             return 0;
         }
-        return DB_menu.get(DB_menu.size() - 1).idMenu;
+        return database.DB_menu.get(database.DB_menu.size() - 1).idMenu;
     }
 
     boolean create(String namaMenu, int hargaMenu) {
         int idBaru = getLastId() + 1;
-        DB_menu.add(new domainMenu(idBaru, namaMenu, hargaMenu));
+        database.DB_menu.add(new domainMenu(idBaru, namaMenu, hargaMenu));
         return true;
     }
 
     ArrayList<domainMenu> readAll() {
-        return DB_menu;
+        return database.DB_menu;
     }
 
     int readById(int idMenu) {
-        for (int i = 0; i < DB_menu.size(); i++) {
-            if (DB_menu.get(i).idMenu == idMenu) {
+        for (int i = 0; i < database.DB_menu.size(); i++) {
+            if (database.DB_menu.get(i).idMenu == idMenu) {
                 return i;
             }
         }
@@ -36,7 +35,7 @@ public class modelMenu {
         if (index == -1) {
             return false;
         }
-        domainMenu menu = DB_menu.get(index);
+        domainMenu menu = database.DB_menu.get(index);
         menu.namaMenu = namaBaru;
         menu.hargaMenu = hargaBaru;
         menu.tersedia = tersedia;
@@ -51,8 +50,14 @@ public class modelMenu {
             System.out.println("Gagal hapus: Menu dengan ID " + idMenu + " tidak ditemukan.");
             return false;
         }
-        DB_menu.remove(index);
+        database.DB_menu.remove(index);
         System.out.println("Menu ID " + idMenu + " berhasil dihapus.");
         return true;
+    }
+
+    void insertStaticData() {
+        create("Nasi Goreng", 15000);
+        create("Mie Ayam", 12000);
+        create("Sate Ayam", 20000);
     }
 }

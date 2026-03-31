@@ -49,13 +49,13 @@ public class mainClass {
         System.out.println("===== TEST READ BY ID =====");
         int idx1 = model.readById(2);
         if (idx1 != -1) {
-            System.out.println("readById(2)  -> index = " + idx1 + " | Menu: " + model.DB_menu.get(idx1).namaMenu);
+            System.out.println("readById(2)  -> index = " + idx1 + " | Menu: " + database.DB_menu.get(idx1).namaMenu);
         } else {
             System.out.println("readById(2)  -> index = " + idx1 + " (tidak ditemukan)");
         }
         int idx99 = model.readById(99);
         if (idx99 != -1) {
-            System.out.println("readById(99) -> index = " + idx99 + " | Menu: " + model.DB_menu.get(idx99).namaMenu);
+            System.out.println("readById(99) -> index = " + idx99 + " | Menu: " + database.DB_menu.get(idx99).namaMenu);
         } else {
             System.out.println("readById(99) -> index = " + idx99 + " (tidak ditemukan)");
         }
