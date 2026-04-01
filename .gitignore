@@ -1,0 +1,7 @@
+*.class
+
+# IDE folders
+.settings/
+.bin/
+.project
+.classpath
